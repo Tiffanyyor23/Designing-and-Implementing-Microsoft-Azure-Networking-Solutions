@@ -545,26 +545,6 @@
       ]
     },
     {
-      "type": "Microsoft.Compute/virtualMachines/extensions",
-      "name": "[concat(parameters('RemotePcName'),'/MyCustomScriptExtension')]",
-      "apiVersion": "2021-11-01",
-      "location": "[parameters('secondVnetLocation')]",
-      "dependsOn": [
-        "[concat('Microsoft.Compute/virtualMachines/',parameters('RemotePcName'))]"
-      ],
-      "properties": {
-        "publisher": "Microsoft.Compute",
-        "type": "CustomScriptExtension",
-        "typeHandlerVersion": "1.4",
-        "settings": {
-          "fileUris": [
-            "[uri(variables('_artifactsLocation'), concat('vpncert.ps1', variables('_artifactsLocationSasToken')))]"
-          ],
-          "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File vpncert.ps1"
-        }
-      }
-    },
-    {
       "apiVersion": "2020-11-01",
       "type": "Microsoft.Network/virtualNetworkGateways",
       "name": "[variables('OnPremGatewayName')]",
